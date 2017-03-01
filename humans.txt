@@ -1,0 +1,20 @@
+# humanstxt.org/
+
+# TEAM
+
+Frontend-developer: Velichko Konstantin
+Site: [Facebook](https://www.facebook.com/konstantin.velichko.5)
+Twitter: @konsvel
+Location: Bishkek, Kyrgyzstan.
+
+Frontend-developer: Khmyrov Anton
+Site: [Facebook](https://www.facebook.com/Toxa88)
+Email: txkan188@gmail.com
+Location: Bishkek, Kyrgyzstan.
+
+
+# SITE
+
+Standards: CSS3, HTML5, SVG, BEM
+Components: jQuery, Normalize.css
+Software: [gulp-front](https://github.com/zoxon/gulp-front)
