@@ -209,7 +209,7 @@ body {
 
 .padded-text_big,
 .padded-text_big .padded-text__w1 {
-	padding: 0.2em 0 0.1em;
+	padding: 0.28em 0 0.14em;
 }
 
 .app-button {
@@ -3118,7 +3118,7 @@ tr:last-child .project-description__text {
 	}
 
 	.main-page__projects {
-		padding-top: 3px;
+		padding-top: 0;
 	}
 
 	.projects-grid-item__description {
@@ -3232,8 +3232,7 @@ tr:last-child .project-description__text {
 	}
 
 	.page__main {
-		padding-top: 63px;
-		padding-bottom: 0;
+		padding-top: 66px;
 	}
 }
 
