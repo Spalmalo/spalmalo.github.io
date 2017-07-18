@@ -36,7 +36,7 @@
 // Modernizr
 // Browser feature detection library for HTML5/CSS3
 //= require modernizr/modernizr-custom-3.2.0.js
-// require modernizr/modernizr-clip-path.js
+//= require modernizr/modernizr-clip-path.js
 
 
 // FastclickJS
@@ -84,13 +84,6 @@
 
 // Clip-path polyfil
 // ---------------------------------------------------------------------------
-// require clipPath/clip-path-polygon.js
-
-
-// JQuery quicksand
-// require quicksand/jquery.quicksand.js
-
-// JQuery Isotope
-// require isotope/isotope.pkgd.js
+//= require clipPath/clip-path-polygon.js
 
 

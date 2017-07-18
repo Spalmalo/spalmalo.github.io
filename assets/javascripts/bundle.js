@@ -12203,7 +12203,58 @@ This test will also return `true` for Firefox 4 Multitouch support.
 ;
 
 })(window, document);
-// require modernizr/modernizr-clip-path.js
+	(function(Modernizr){
+
+		// Here are all the values we will test. If you want to use just one or two, comment out the lines of test you don't need.
+		var tests = [
+			{ name: 'svg', value: 'url(#test)' }, // False positive in IE, supports SVG clip-path, but not on HTML element
+			{ name: 'inset', value: 'inset(10px 20px 30px 40px)' },
+			{ name: 'circle', value: 'circle(60px at center)' },
+			{ name: 'ellipse', value: 'ellipse(50% 50% at 50% 50%)' },
+			{ name: 'polygon', value: 'polygon(50% 0%, 0% 100%, 100% 100%)' }
+		];
+
+		var t = 0,
+				name, value, prop;
+
+		for (; t < tests.length; t++) {
+			name = tests[t].name;
+			value = tests[t].value;
+			Modernizr.addTest('cssclippath' + name, function(){
+				// Try using window.CSS.supports
+				if ( 'CSS' in window && 'supports' in window.CSS ) {
+					for (var i = 0; i < Modernizr._prefixes.length; i++) {
+						prop = Modernizr._prefixes[i] + 'clip-path'
+
+						if ( window.CSS.supports(prop,value) ) { return true; }
+					}
+					return false;
+				}
+				// Otherwise, use Modernizr.testStyles and examine the property manually
+				return Modernizr.testStyles('#modernizr { '+Modernizr._prefixes.join('clip-path:'+value+'; ')+' }',function(elem, rule) {
+					var style = getComputedStyle(elem),
+							clip = style.clipPath;
+
+					if ( !clip || clip == "none" ) {
+						clip = false;
+
+						for (var i = 0; i < Modernizr._domPrefixes.length; i++) {
+							test = Modernizr._domPrefixes[i] + 'ClipPath';
+							if ( style[test] && style[test] !== "none" ) {
+								clip = true;
+								break;
+							}
+						}
+					}
+
+					return Modernizr.testProp('clipPath') && clip;
+				});
+			});
+
+		}
+
+	})(Modernizr);
+
 
 
 // FastclickJS
@@ -17637,14 +17688,142 @@ This test will also return `true` for Firefox 4 Multitouch support.
 
 // Clip-path polyfil
 // ---------------------------------------------------------------------------
-// require clipPath/clip-path-polygon.js
+/*!
+ * jQuery clip-path-polygon Plugin v0.1.10 (2016-05-07)
+ * jQuery plugin that makes easy to use clip-path on whatever tag under different browsers
+ * https://github.com/andrusieczko/clip-path-polygon
+ *
+ * Copyright 2016 Karol Andrusieczko
+ * Released under MIT license
+ */
+
+var globalVariable = window || root;
+var jQuery = jQuery || globalVariable.jQuery || (require && require('jquery'));
+
+(function($) {
+  var id = 0;
+
+  var ClipPath = function(jQuery, $el, points, options) {
+    this.$ = jQuery;
+    this.$el = $el;
+    this.points = points;
+    this.svgDefId = 'clipPathPolygonGenId' + id++;
+
+    this.processOptions(options);
+  };
+
+  if (typeof exports !== 'undefined') {
+    if (typeof module !== 'undefined' && module.exports) {
+      exports = module.exports = ClipPath;
+    }
+    exports.ClipPath = ClipPath;
+  } else {
+    globalVariable.ClipPath = ClipPath;
+  }
+
+  ClipPath.prototype = {
+
+    $: null,
+    $el: null,
+    points: null,
+
+    isForWebkit: true,
+    isForSvg: true,
+    svgDefId: null,
+    isPercentage: false,
+
+    create: function() {
+      this._createClipPath(this.points);
+    },
+
+    _createClipPath: function(points) {
+      this._createSvgDefs();
+      if (this.isForWebkit) {
+        this._createWebkitClipPath(points);
+      }
+      if (this.isForSvg) {
+        this._createSvgBasedClipPath(points);
+      }
+    },
+
+    _createWebkitClipPath: function(points) {
+      var clipPath = "polygon(" + this._translatePoints(points, true, this.isPercentage) + ")";
+      this.$el.css('-webkit-clip-path', clipPath);
+    },
+
+    _createSvgBasedClipPath: function(points) {
+      this.$('#' + this.svgDefId + '').find('polygon').attr('points', this._translatePoints(points, false, this.isPercentage));
+      this.$el.css('clip-path', 'url(#' + this.svgDefId + ')');
+    },
 
 
-// JQuery quicksand
-// require quicksand/jquery.quicksand.js
+    _translatePoints: function(points, withUnit, isPercentage) {
+      var result = [];
+      for (var i in points) {
+        var x = this._handlePxs(points[i][0], withUnit, isPercentage);
+        var y = this._handlePxs(points[i][1], withUnit, isPercentage);
+        result.push(x + ' ' + y);
+      }
+      return result.join(', ');
+    },
 
-// JQuery Isotope
-// require isotope/isotope.pkgd.js
+    _handlePxs: function(number, withUnit, isPercentage) {
+      if (number === 0) {
+        return number;
+      }
+      if (!withUnit) {
+        if (isPercentage) {
+          return number / 100;
+        }
+        return number;
+      }
+
+      return number + (isPercentage ? "%" : "px");
+    },
+
+    _createSvgElement: function(elementName) {
+      return this.$(document.createElementNS('http://www.w3.org/2000/svg', elementName));
+    },
+
+    _createSvgDefs: function() {
+      if (this.$('#' + this.svgDefId + '').length === 0) {
+        var $svg = this._createSvgElement('svg').attr('width', 0).attr('height', 0).css({
+          'position': 'absolute',
+          'visibility': 'hidden',
+          'width': 0,
+          'height': 0
+        });
+        var $defs = this._createSvgElement('defs');
+        $svg.append($defs);
+        var $clippath = this._createSvgElement('clipPath').attr('id', this.svgDefId);
+        if (this.isPercentage) {
+          $clippath.get(0).setAttribute('clipPathUnits', 'objectBoundingBox');
+        }
+        $defs.append($clippath);
+        var $polygon = this._createSvgElement('polygon');
+        $clippath.append($polygon);
+        this.$('body').append($svg);
+      }
+    },
+
+    processOptions: function(options) {
+      this.isForWebkit = (options && typeof(options.isForWebkit) !== "undefined") ? options.isForWebkit : this.isForWebkit;
+      this.isForSvg = (options && typeof(options.isForSvg) !== "undefined") ? options.isForSvg : this.isForSvg;
+      this.isPercentage = (options && options.isPercentage || this.isPercentage);
+      this.svgDefId = (options && options.svgDefId) || this.svgDefId;
+    }
+  };
+
+  $.fn.clipPath = function(points, options) {
+    return this.each(function() {
+      var $el = $(this);
+      var clipPath = new ClipPath($, $el, points, options);
+      clipPath.create();
+    });
+  };
+
+}).call(this, jQuery);
+
 
 
 
@@ -17681,6 +17860,71 @@ $('.table').basictable({ baseClass: 'table' });
 
 	$('.browsehappy').click(function() {
 		$(this).slideUp();
+	});
+
+})();
+
+// carousel-slider
+(function() {
+
+	$('.carousel-slider__slides').slick({
+		slidesToShow: 5,
+		slidesToScroll: 1,
+		dots: false,
+		arrows: true,
+		variableWidth: true,
+		infinite: false,
+		autoplay: false,
+		prevArrow:"<button role='button' class='carousel-slider__arrow carousel-slider__arrow_prev'></button>",
+		nextArrow:"<button role='button' class='carousel-slider__arrow carousel-slider__arrow_next'></button>",
+		responsive: [
+			{
+				breakpoint: 1280,
+				settings: {
+					slidesToShow: 4
+				}
+			},
+			{
+				breakpoint: 1140,
+				settings: {
+					slidesToShow: 3
+				}
+			},
+			{
+				breakpoint: 960,
+				settings: {
+					slidesToShow: 3,
+					arrows: false,
+					variableWidth: false
+				}
+			},
+			{
+				breakpoint: 800,
+				settings: {
+					slidesToShow: 2,
+					arrows: false,
+					variableWidth: false
+				}
+			},
+			{
+				breakpoint: 540,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1,
+					variableWidth: false,
+					arrows: true
+				}
+			},
+			{
+				breakpoint: 480,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1,
+					variableWidth: false,
+					arrows: false
+				}
+			}
+		]
 	});
 
 })();
