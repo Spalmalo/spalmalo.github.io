@@ -1023,6 +1023,10 @@ input[type="button"].button_block {
 	background: none;
 }
 
+.footer_main .footer__inner {
+	max-width: 1286px;
+}
+
 .header {
 	padding: 19px 0 20px;
 
@@ -1571,7 +1575,7 @@ input[type="button"].button_block {
 }
 
 .main-page__clients {
-	padding-bottom: 80px;
+	padding-bottom: 120px;
 }
 
 .main-page__services-list {
@@ -1901,6 +1905,7 @@ input[type="button"].button_block {
 }
 
 .mobile-menu__language {
+	display: none;
 	float: right;
 	padding-top: 7px;
 }
@@ -3758,6 +3763,10 @@ tr:last-child .project-description__text {
 
 	.mobile-menu {
 		padding: 20px;
+	}
+
+	.mobile-menu__language {
+		display: block;
 	}
 
 	.page__main {

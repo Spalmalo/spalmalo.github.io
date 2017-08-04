@@ -79,7 +79,7 @@
 // Slick slider
 // ---------------------------------------------------------------------------
 // require slick/slick.js
-//= require slick-carousel\slick\slick.js
+//= require slick-carousel/slick/slick.js
 
 
 // Clip-path polyfil
