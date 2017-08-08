@@ -1531,9 +1531,18 @@ input[type="button"].button_block {
 }
 
 .contacts-full__body {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-justify-content: center;
+	justify-content: center;
 	max-width: 744px;
 	margin: 0 auto;
 	padding-bottom: 56px;
+
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
 }
 
 .contacts-full__body:before,
@@ -1551,17 +1560,8 @@ input[type="button"].button_block {
 	zoom: 1;
 }
 
-.contacts-full__left,
-.contacts-full__right {
+.contacts-full__block {
 	width: 316px;
-}
-
-.contacts-full__left {
-	float: left;
-}
-
-.contacts-full__right {
-	float: right;
 }
 
 .contacts-full_full-height .contacts-full__inner {
@@ -4291,20 +4291,11 @@ tr:last-child .project-description__text {
 		font-size: 0;
 	}
 
-	.contacts-full__left,
-	.contacts-full__right {
+	.contacts-full__block {
 		width: auto;
+		padding-bottom: 40px;
 
 		text-align: center;
-	}
-
-	.contacts-full__left {
-		padding-bottom: 40px;
-	}
-
-	.contacts-full__left,
-	.contacts-full__right {
-		float: none;
 	}
 
 	.m_cssclippathpolygon .main-feedback_contacts .main-feedback__services-inner {
