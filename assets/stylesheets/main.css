@@ -1025,6 +1025,8 @@ input[type="button"].button_block {
 
 .footer_main .footer__inner {
 	max-width: 1286px;
+	padding-right: 14px;
+	padding-left: 14px;
 }
 
 .header {
@@ -1202,7 +1204,7 @@ input[type="button"].button_block {
 
 .main-about__about {
 	position: relative;
-	z-index: 1;
+	z-index: 5;
 
 	max-width: 885px;
 	margin: 0 auto;
@@ -1280,7 +1282,7 @@ input[type="button"].button_block {
 
 .main-about__bottom {
 	position: relative;
-	z-index: 1;
+	z-index: 5;
 }
 
 .main-about__bottom:after {
