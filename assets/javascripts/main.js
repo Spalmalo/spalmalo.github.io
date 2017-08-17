@@ -1,12 +1,13 @@
 'use strict';
+/* global $ */
 
 svg4everybody();
 
-$(function() {
-	FastClick.attach(document.body);
-});
+// $(function() {
+// 	FastClick.attach(document.body);
+// });
 
-$('.table').basictable({ baseClass: 'table' });
+// $('.table').basictable({ baseClass: 'table' });
 
 // Paralax background
 (function(){

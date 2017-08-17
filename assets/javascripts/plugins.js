@@ -45,9 +45,9 @@
 
 
 // Placeholders polyfill
-//= require placeholders.js/lib/utils.js
-//= require placeholders.js/lib/main.js
-//= require placeholders.js/lib/adapters/placeholders.jquery.js
+// require placeholders.js/lib/utils.js
+// require placeholders.js/lib/main.js
+// require placeholders.js/lib/adapters/placeholders.jquery.js
 
 
 // SVG4Everybody
@@ -67,13 +67,13 @@
 // Basic table
 // Responsive tables
 // ---------------------------------------------------------------------------
-//= require basictable/jquery.basictable.js
+// require basictable/jquery.basictable.js
 
 
 // Remodal
 // Css modal windows
 // ---------------------------------------------------------------------------
-//= require remodal/dist/remodal.js
+// require remodal/dist/remodal.js
 
 
 // Slick slider
