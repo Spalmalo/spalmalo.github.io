@@ -16417,7 +16417,7 @@ svg4everybody();
 })();
 
 // carousel-slider
-(function() {
+(function () {
 
 	$('.carousel-slider__slides').slick({
 		slidesToShow: 5,
@@ -16429,8 +16429,7 @@ svg4everybody();
 		autoplay: false,
 		prevArrow: '<button type="button" class="carousel-slider__arrow carousel-slider__arrow_prev"></button>',
 		nextArrow: '<button type="button" class="carousel-slider__arrow carousel-slider__arrow_next"></button>',
-		responsive: [
-			{
+		responsive: [{
 				breakpoint: 1280,
 				settings: {
 					slidesToShow: 4
@@ -16439,7 +16438,7 @@ svg4everybody();
 			{
 				breakpoint: 1140,
 				settings: {
-					slidesToShow: 3
+					slidesToShow: 4
 				}
 			},
 			{

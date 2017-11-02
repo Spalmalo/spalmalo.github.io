@@ -1218,7 +1218,7 @@ input[type="button"].button_block {
 .carousel-slider__item {
 	display: inline-block !important;
 	float: none;
-	margin-right: 80px;
+	margin-right: 72px;
 
 	vertical-align: middle;
 }
@@ -1256,7 +1256,7 @@ input[type="button"].button_block {
 	z-index: 10;
 
 	width: 70px;
-	height: 100%;
+	height: 65px;
 	padding: 0;
 	padding: 0;
 
@@ -1427,6 +1427,14 @@ input[type="button"].button_block {
 
 .carousel-slider__logo_jti:hover .jti__color {
 	fill: #00aa60;
+}
+
+.carousel-slider__logo_besmart .besmart__color {
+	fill: #b7b7b7;
+}
+
+.carousel-slider__logo_besmart:hover .besmart__color {
+	fill: #2171cc;
 }
 
 .contact-widget {
@@ -3879,6 +3887,7 @@ tr:last-child .project-description__text {
 
 	.carousel-slider__inner {
 		max-width: 1060px;
+		padding: 0 65px;
 	}
 }
 
