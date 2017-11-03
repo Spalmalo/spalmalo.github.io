@@ -1216,7 +1216,7 @@ input[type="button"].button_block {
 }
 
 .carousel-slider__item {
-	display: inline-block !important;
+	display: inline-block;
 	float: none;
 	margin-right: 72px;
 
@@ -1322,7 +1322,7 @@ input[type="button"].button_block {
 
 .carousel-slider__logo_blazz .blazz__rocket,
 .carousel-slider__logo_blazz .blazz__letters {
-	fill: #c7c7c7;
+	fill: #b7b7b7;
 }
 
 .carousel-slider__logo_blazz:hover .blazz__rocket {
@@ -1435,6 +1435,37 @@ input[type="button"].button_block {
 
 .carousel-slider__logo_besmart:hover .besmart__color {
 	fill: #2171cc;
+}
+
+.carousel-slider_static {
+	padding: 0;
+}
+
+.carousel-slider_static .carousel-slider__inner {
+	padding: 0;
+}
+
+.carousel-slider_static .carousel-slider__slides {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-align-items: center;
+	align-items: center;
+
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+}
+
+.carousel-slider_static .carousel-slider__item {
+	margin: 0 60px 50px;
 }
 
 .contact-widget {
@@ -2244,7 +2275,7 @@ input[type="button"].button_block {
 }
 
 .main-page__clients {
-	padding-bottom: 120px;
+	padding-bottom: 70px;
 }
 
 .main-page__services-list {
@@ -3923,6 +3954,10 @@ tr:last-child .project-description__text {
 	.carousel-slider__inner {
 		max-width: 920px;
 	}
+
+	.carousel-slider_static .carousel-slider__item {
+		margin: 0 40px 50px;
+	}
 }
 
 @media only screen and (max-width: 1050px) {
@@ -3942,6 +3977,10 @@ tr:last-child .project-description__text {
 @media only screen and (max-width: 1024px) {
 	.carousel-slider__title {
 		padding-bottom: 70px;
+	}
+
+	.carousel-slider_static {
+		padding: 0;
 	}
 
 	.footer__inner {
@@ -4077,6 +4116,10 @@ tr:last-child .project-description__text {
 
 		text-align: center;
 	}
+
+	.carousel-slider_static .carousel-slider__item {
+		margin: 0 30px 50px;
+	}
 }
 
 @media only screen and (max-width: 910px) {
@@ -4158,6 +4201,10 @@ tr:last-child .project-description__text {
 
 	.carousel-slider__item {
 		margin-right: 40px;
+	}
+
+	.carousel-slider_static .carousel-slider__inner {
+		max-width: 100%;
 	}
 
 	.contacts-full {
@@ -4385,6 +4432,27 @@ tr:last-child .project-description__text {
 
 	.main-slider-item__description {
 		font-size: 16px;
+	}
+}
+
+@media only screen and (max-width: 580px) {
+	.carousel-slider_static .carousel-slider__slides {
+		display: block;
+	}
+
+	.carousel-slider_static .carousel-slider__item {
+		display: block;
+		margin: 0 30px 70px;
+
+		text-align: center;
+	}
+
+	.carousel-slider_static .carousel-slider__item:last-child {
+		margin-bottom: 50px;
+	}
+
+	.carousel-slider_static .carousel-slider__item-wrapper {
+		width: 100%;
 	}
 }
 

@@ -16416,66 +16416,21 @@ svg4everybody();
 
 })();
 
-// carousel-slider
+// // language-switcher
 (function () {
 
-	$('.carousel-slider__slides').slick({
-		slidesToShow: 5,
-		slidesToScroll: 1,
-		dots: false,
-		arrows: true,
-		variableWidth: true,
-		infinite: false,
-		autoplay: false,
-		prevArrow: '<button type="button" class="carousel-slider__arrow carousel-slider__arrow_prev"></button>',
-		nextArrow: '<button type="button" class="carousel-slider__arrow carousel-slider__arrow_next"></button>',
-		responsive: [{
-				breakpoint: 1280,
-				settings: {
-					slidesToShow: 4
-				}
-			},
-			{
-				breakpoint: 1140,
-				settings: {
-					slidesToShow: 4
-				}
-			},
-			{
-				breakpoint: 960,
-				settings: {
-					slidesToShow: 3,
-					arrows: false,
-					variableWidth: false
-				}
-			},
-			{
-				breakpoint: 800,
-				settings: {
-					slidesToShow: 2,
-					arrows: false,
-					variableWidth: false
-				}
-			},
-			{
-				breakpoint: 540,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1,
-					variableWidth: false,
-					arrows: true
-				}
-			},
-			{
-				breakpoint: 480,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1,
-					variableWidth: false,
-					arrows: false
-				}
-			}
-		]
+	$("[data-localization]").on('click', function (event) {
+		event.preventDefault();
+		var $link = $(this);
+		var targetLocalization = $link.attr('data-localization');
+		window.location = changeLocalization(targetLocalization)
+
+		function changeLocalization(localization) {
+			var origin = location.origin;
+			var path = location.pathname.split("/");
+			path[1] = localization;
+			return origin + path.join("/");
+		}
 	});
 
 })();
