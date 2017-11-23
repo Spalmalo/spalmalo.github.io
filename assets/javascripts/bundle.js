@@ -16450,6 +16450,7 @@ svg4everybody();
 		arrows: true,
 		useTransform: true,
 		cssEase: 'ease',
+		adaptiveHeight: true,
 		responsive: [
 			{
 				breakpoint: 900,
@@ -16465,6 +16466,26 @@ svg4everybody();
 				}
 			}
 		]
+	});
+
+
+
+	$('.main-slider__slides').on('afterChange', function (event, slick, currentSlide) {
+		var $current = $(slick.$slides[currentSlide]);
+		var $currentSlideVideo = $current.find('video');
+
+		if ($current.hasClass('main-slider__item_video')) {
+			$currentSlideVideo.get(0).play();
+		}
+	});
+
+	$('.main-slider__slides').on('beforeChange', function (event, slick, currentSlide) {
+		var $current = $(slick.$slides[currentSlide]);
+		var $currentSlideVideo = $current.find('video');
+
+		if ($current.hasClass('main-slider__item_video')) {
+			$currentSlideVideo.get(0).pause();
+		}
 	});
 
 })();
