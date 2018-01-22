@@ -1437,6 +1437,30 @@ input[type="button"].button_block {
 	fill: #2171cc;
 }
 
+.carousel-slider__logo_veeqo .veeqo__figure-1 {
+	fill: #9f9f9f;
+}
+
+.carousel-slider__logo_veeqo .veeqo__figure-2 {
+	fill: #b9b9b9;
+}
+
+.carousel-slider__logo_veeqo .veeqo__text {
+	fill: #b7b7b7;
+}
+
+.carousel-slider__logo_veeqo:hover .veeqo__figure-1 {
+	fill: #3494d1;
+}
+
+.carousel-slider__logo_veeqo:hover .veeqo__figure-2 {
+	fill: #ef7e6e;
+}
+
+.carousel-slider__logo_veeqo:hover .veeqo__text {
+	fill: #3d3f45;
+}
+
 .carousel-slider_static {
 	padding: 0;
 }
