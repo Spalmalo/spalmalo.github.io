@@ -804,6 +804,30 @@ input[type="button"].button_block {
 	fill: #3d3f45;
 }
 
+.carousel-slider__logo_turkmen {
+	max-width: 260px;
+}
+
+.carousel-slider__logo_turkmen svg {
+	width: 100%;
+}
+
+.carousel-slider__logo_turkmen .turkmen__figure-1 {
+	fill: #9f9f9f;
+}
+
+.carousel-slider__logo_turkmen .turkmen__figure-2 {
+	fill: #fff;
+}
+
+.carousel-slider__logo_turkmen:hover .turkmen__figure-1 {
+	fill: #5a9fdf;
+}
+
+.carousel-slider__logo_turkmen:hover .turkmen__figure-2 {
+	fill: #fff;
+}
+
 .carousel-slider_static {
 	padding: 0;
 }

@@ -16407,6 +16407,14 @@ svg4everybody();
 
 
 // Modules
+function fileInclude(path) {
+	var MODULES_PATH = "./source/modules/";
+	var fullPath = _.path.join(MODULES_PATH, path)
+	var content = _.fs.readFileSync(fullPath, 'utf8');
+	return content;
+}
+
+
 // browsehappy
 (function() {
 
