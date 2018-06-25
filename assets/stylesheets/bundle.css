@@ -4513,6 +4513,10 @@ tr:last-child .project-description__text {
 }
 
 @media only screen and (max-width: 580px) {
+	.carousel-slider__logo_turkmen {
+		margin: 0 auto;
+	}
+
 	.carousel-slider_static .carousel-slider__slides {
 		display: block;
 	}
