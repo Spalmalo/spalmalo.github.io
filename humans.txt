@@ -1,20 +1,16 @@
 # humanstxt.org/
+# The humans responsible & technology colophon
 
 # TEAM
 
-Frontend-developer: Velichko Konstantin
-Site: [Facebook](https://www.facebook.com/konstantin.velichko.5)
-Twitter: @konsvel
-Location: Bishkek, Kyrgyzstan.
+    <name> -- <role> -- <twitter>
 
-Frontend-developer: Khmyrov Anton
-Site: [Facebook](https://www.facebook.com/Toxa88)
-Email: txkan188@gmail.com
-Location: Bishkek, Kyrgyzstan.
+# THANKS
 
+    <name>
 
-# SITE
+# TECHNOLOGY COLOPHON
 
-Standards: CSS3, HTML5, SVG, BEM
-Components: jQuery, Normalize.css
-Software: [gulp-front](https://github.com/zoxon/gulp-front)
+    BEM
+    CSS3, HTML5
+    Apache Server Configs, jQuery, Modernizr, Normalize.css
